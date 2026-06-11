@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Panel de Administrador - Gestión de Inventario</h2>
+            <a href="index.html" class="btn-logout">Cerrar Sesión</a>
+        </header>
+
+        <main>
+            <!-- Formulario para agregar / editar -->
+            <section class="form-section">
+                <h3 id="formTitle">Agregar Nuevo Producto</h3>
+                <form id="productoForm">
+                    <input type="hidden" id="productoId">
+                    <input type="text" id="nombre" placeholder="Nombre del Producto" required>
+                    <input type="number" id="precio" step="0.01" placeholder="Precio" required>
+                    <input type="number" id="stock" placeholder="Stock Inicial" required>
+                    <button type="submit" id="btnGuardar">Guardar Producto</button>
+                    <button type="button" id="btnCancelar" style="display:none;" onclick="resetearFormulario()">Cancelar Edición</button>
+                </form>
+            </section>
+
+            <!-- Tabla de gestión -->
+            <section class="table-section">
+                <h3>Listado de Inventario</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaProductosAdmin">
+                        <!-- Carga dinámica -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Nueva sección para ver las ventas realizadas -->
+<section class="facturas-section" style="margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px;">
+    <h3>Historial de Ventas / Facturas Realizadas</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Factura ID</th>
+                <th>Fecha y Hora</th>
+                <th>Empleado / Cajero</th>
+                <th>Total Cobrado</th>
+            </tr>
+        </thead>
+        <tbody id="tablaFacturasAdmin">
+            <!-- Aquí se cargarán las facturas dinámicamente -->
+        </tbody>
+    </table>
+</section>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

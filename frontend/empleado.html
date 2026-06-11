@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Empleado - Ventas y Stock</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Módulo de Ventas - Caja Registradora</h2>
+            <a href="index.html" class="btn-logout">Cerrar Sesión</a>
+        </header>
+
+        <main style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+            
+            <!-- SECCIÓN IZQUIERDA: STOCK -->
+            <section class="inventario-section">
+                <h3>Buscar Productos en Stock</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Disponibles</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaProductosEmpleado">
+                        <!-- Carga dinámica -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- SECCIÓN DERECHA: CARRITO Y COBRO -->
+            <section class="cobro-section" style="background: #fdfdfd; padding: 20px; border: 1px solid #ddd; border-radius: 6px;">
+                <h3>Carrito de Compras / Factura</h3>
+                <table style="width: 100%; margin-bottom: 15px;">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Cant.</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carritoVenta">
+                        <!-- Productos agregados para cobrar -->
+                    </tbody>
+                </table>
+
+                <div style="text-align: right; font-size: 1.3rem; font-weight: bold; margin-bottom: 15px;">
+                    Total a Pagar: $<span id="totalVenta">0.00</span>
+                </div>
+
+                <button id="btnCobrar" onclick="procesarCobro()" style="width: 100%; padding: 12px; font-size: 1.1rem; background-color: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px;">
+                    🛒 Confirmar y Cobrar Venta
+                </button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/empleado.js"></script>
+</body>
+</html>
