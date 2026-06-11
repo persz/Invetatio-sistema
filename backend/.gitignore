@@ -2,7 +2,7 @@
 node_modules/
 
 # Variables de entorno con credenciales
-.env
+**/.env
 
 # Archivos del sistema operativo
 .DS_Store
