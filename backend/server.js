@@ -28,7 +28,7 @@ app.use('/api/usuarios', usuariosRoutes);
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Redirigir cualquier otra petición usando la nueva sintaxis obligatoria de parámetros
-app.get('/:any*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
