@@ -18,23 +18,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 5. Conexión de los endpoints de la API (Todos unificados en plural)
+// 5. Conexión de los endpoints de la API
 app.use('/api/auth', authRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/facturas', facturasRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 
-// 6. Ruta base de prueba para verificar que responda el servidor
-app.get('/', (req, res) => {
-    res.send('Servidor corriendo perfectamente');
-});
-
-const path = require('path');
-
-// Servir archivos estáticos subiendo un nivel a la carpeta frontend
+// 6. Servir archivos estáticos subiendo un nivel a la carpeta frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Redirigir cualquier petición que no sea de la API al index.html
+// Redirigir cualquier otra petición que no sea de la API al index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
