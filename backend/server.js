@@ -7,21 +7,22 @@ const cors = require('cors');
 const path = require('path');
 
 // 3. Importaciones de tus rutas locales
-const authRoutes = require('./routes/authRoutes');
-const productoRoutes = require('./routes/productoRoutes');
-const facturaRoutes = require('./routes/facturaRoutes');
-const usuarioRoutes = require('./routes/usuarios'); 
+const authRoutes = require('./routes/auth');
+const productosRoutes = require('./routes/productos');
+const facturasRoutes = require('./routes/facturas');
+const usuariosRoutes = require('./routes/usuarios');
+
 const app = express();
 
 // 4. Middlewares globales
 app.use(cors());
 app.use(express.json());
 
-// 5. Conexión de los endpoints de la API
+// 5. Conexión de los endpoints de la API (Todos unificados en plural)
 app.use('/api/auth', authRoutes);
-app.use('/api/productos', productoRoutes);
-app.use('/api/facturas', facturaRoutes);
-app.use('/api/usuarios', usuarioRoutes); // <-- 2. LE FALTABA CONECTAR ESTE ENDPOINT
+app.use('/api/productos', productosRoutes);
+app.use('/api/facturas', facturasRoutes);
+app.use('/api/usuarios', usuariosRoutes);
 
 // 6. Ruta base de prueba para verificar que responda el servidor
 app.get('/', (req, res) => {
