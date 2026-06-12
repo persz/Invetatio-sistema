@@ -4,28 +4,28 @@ const bcrypt = require('bcryptjs');
 const login = async (req, res) => {
     const { username, password } = req.body;
 
-    // 👇 Esto nos dirá en la terminal si el frontend está enviando los datos correctamente
     console.log(`✉️ Intento de login recibido - Usuario: "${username}"`);
 
     try {
-        // Buscamos al usuario por su nombre
+        // Buscar usuario por nombre
         const [rows] = await pool.query('SELECT * FROM usuarios WHERE username = ?', [username]);
 
+        // Validar existencia del usuario
         if (rows.length === 0) {
-            // Ajustado a 'error' para que auth.js muestre el mensaje real en la pantalla
             return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
         }
 
         const user = rows[0];
 
-        // Comparamos el hash de la base de datos con la clave que viene del formulario
+        // Comparar contraseña con el hash guardado
         const coinciden = await bcrypt.compare(password, user.password); 
 
+        // Validar coincidencia de contraseña
         if (!coinciden) {
             return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
         }
 
-        // 👇 ¡AJUSTE CLAVE! Enviamos los datos en la raíz para que tu auth.js los lea perfectamente
+        // Responder con los datos del perfil
         res.json({
             id: user.id,
             username: user.username,
