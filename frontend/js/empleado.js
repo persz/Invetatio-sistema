@@ -3,8 +3,8 @@ if (!localStorage.getItem('usuario_rol')) {
     window.location.href = 'index.html';
 }
 
-const API_PRODUCTOS = 'http://localhost:3000/api/productos';
-const API_FACTURAS = 'http://localhost:3000/api/facturas';
+const API_PRODUCTOS = '/api/productos';
+const API_FACTURAS = '/api/facturas';
 
 let productosInventario = [];
 let carrito = [];
@@ -104,11 +104,11 @@ async function procesarCobro() {
     
     // Armamos la estructura que el controlador espera recibir
     const datosFactura = {
-    total: total,
-    // Recuperamos el ID del usuario que guardó el login en el navegador
-    usuario_id: parseInt(localStorage.getItem('usuario_id')), 
-    productos: carrito
-};
+        total: total,
+        // Recuperamos el ID del usuario que guardó el login en el navegador
+        usuario_id: parseInt(localStorage.getItem('usuario_id')), 
+        productos: carrito
+    };
 
     try {
         const respuesta = await fetch(API_FACTURAS, {

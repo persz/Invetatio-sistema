@@ -1,5 +1,4 @@
-
-const API_URL = 'http://localhost:3000/api/productos';
+const API_URL = '/api/productos';
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
@@ -7,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('productoForm').addEventListener('submit', guardarProducto);
 });
+
 // Cargar inventario completo
 async function cargarProductos() {
     try {
@@ -105,7 +105,7 @@ function resetearFormulario() {
 }
 
 async function cargarFacturas() {
-    const API_FACTURAS = 'http://localhost:3000/api/facturas';
+    const API_FACTURAS = '/api/facturas';
     try {
         const respuesta = await fetch(API_FACTURAS);
         const facturas = await respuesta.json();
