@@ -26,7 +26,17 @@ app.use('/api/usuarios', usuariosRoutes);
 
 // 6. Ruta base de prueba para verificar que responda el servidor
 app.get('/', (req, res) => {
-    res.send('Servidor corriendo perfectamente 🚀');
+    res.send('Servidor corriendo perfectamente');
+});
+
+const path = require('path');
+
+// Servir archivos estáticos subiendo un nivel a la carpeta frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Redirigir cualquier petición que no sea de la API al index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 // 7. Arranque del servidor
