@@ -10,8 +10,7 @@ const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const productoRoutes = require('./routes/productoRoutes');
 const facturaRoutes = require('./routes/facturaRoutes');
-const usuarioRoutes = require('./routes/usuarios'); // <-- 1. LE FALTABA ESTA IMPORTACIÓN
-
+const usuarioRoutes = require('./routes/usuarios'); 
 const app = express();
 
 // 4. Middlewares globales
