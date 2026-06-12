@@ -1,116 +1,222 @@
-/* Estilos Generales */
+/* ==========================================
+   Estilos Generales & Reset (Tech Dark Mode)
+   ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    background-color: #f4f6f9;
-    color: #333;
+    background-color: #0f172a; /* Fondo Slate Oscuro */
+    color: #f1f5f9; /* Texto claro */
     display: flex;
     justify-content: center;
     padding: 20px;
+    min-height: 100vh;
 }
 
+/* Contenedor Principal de los Paneles (Admin/Empleado) */
 .container {
     width: 100%;
     max-width: 1200px;
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: #1e293b; /* Gris azulado intermedio */
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
+    border-bottom: 1px solid #475569;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* Login */
+header h1, header h2 {
+    color: #f8fafc;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+/* ==========================================
+   Sección Unica de Login 
+   ========================================== */
 .login-container {
-    background: #fff;
+    background: #1e293b;
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    border: 1px solid #334155;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 400px;
-    margin-top: 10vh;
+    margin-top: 12vh;
     text-align: center;
+    align-self: flex-start; /* Evita estiramientos raros en flex */
+}
+
+.login-container h2 {
+    color: #f8fafc;
+    margin-bottom: 20px;
+    font-size: 1.75rem;
 }
 
 .login-container input {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    background-color: #0f172a;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    color: #f8fafc;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Efecto de enfoque cuando escribes en el Login */
+.login-container input:focus, .form-section input:focus {
+    outline: none;
+    border-color: #06b6d4; /* Acento Cian */
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
 }
 
 .login-container button {
     width: 100%;
     padding: 12px;
-    background: #007bff;
-    color: white;
+    background: #06b6d4; /* Botón principal Cian */
+    color: #0f172a; /* Texto oscuro para contraste */
     border: none;
-    border-radius: 4px;
-    font-weight: bold;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background 0.2s ease;
+    margin-top: 10px;
 }
 
-/* Tablas */
+.login-container button:hover {
+    background: #0891b2;
+}
+
+/* Estilo para el mensaje de error que maneja auth.js */
+#error-msg {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #fca5a5;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   Tablas de Inventario Modernas
+   ========================================== */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #334155;
 }
 
 th, td {
-    padding: 12px;
+    padding: 14px 16px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #334155;
 }
 
 th {
-    background-color: #f8f9fa;
-    color: #555;
+    background-color: #0f172a;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
 }
 
-/* Botones y Formularios */
+td {
+    color: #cbd5e1;
+    background-color: #1e293b;
+    font-size: 0.95rem;
+}
+
+/* Efecto hover en las filas de la tabla */
+tr:hover td {
+    background-color: #24334d; /* Resalta sutilmente la fila activa */
+}
+
+/* ==========================================
+   Botones del Panel y Formularios
+   ========================================== */
 button {
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 8px 14px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 .btn-logout {
-    background: #dc3545;
+    background: #ef4444; /* Rojo plano moderno */
     color: white;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 18px;
+    border-radius: 6px;
     font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
 }
 
-.btn-edit { background: #ffc107; color: #212529; margin-right: 5px; }
-.btn-delete { background: #dc3545; color: white; }
+.btn-logout:hover {
+    background: #dc2626;
+}
+
+.btn-edit { 
+    background: #f59e0b; /* Ámbar plano */
+    color: #0f172a; 
+    margin-right: 6px; 
+}
+
+.btn-delete { 
+    background: #ef4444; 
+    color: white; 
+}
+
+/* Formulario de agregar/editar productos */
+.form-section {
+    background: #0f172a;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    margin-bottom: 25px;
+}
 
 .form-section input {
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 14px;
+    margin-right: 12px;
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    color: #f8fafc;
+    font-size: 0.95rem;
 }
 
 #productoForm button {
-    background: #28a745;
-    color: white;
-    padding: 8px 16px;
+    background: #10b981; /* Esmeralda para acciones de guardar */
+    color: #0f172a;
+    padding: 10px 20px;
 }
