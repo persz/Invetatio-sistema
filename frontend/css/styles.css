@@ -13,6 +13,7 @@ body {
     color: #f1f5f9; /* Texto claro */
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     padding: 20px;
     min-height: 100vh;
 }
@@ -36,6 +37,7 @@ header {
     border-bottom: 1px solid #475569;
     padding-bottom: 20px;
     margin-bottom: 30px;
+    gap: 15px; /* Evita que los textos colisionen */
 }
 
 header h1, header h2 {
@@ -45,7 +47,7 @@ header h1, header h2 {
 }
 
 /* ==========================================
-   Sección Unica de Login 
+   Sección Única de Login 
    ========================================== */
 .login-container {
     background: #1e293b;
@@ -57,7 +59,7 @@ header h1, header h2 {
     max-width: 400px;
     margin-top: 12vh;
     text-align: center;
-    align-self: flex-start; /* Evita estiramientos raros en flex */
+    align-self: center; /* Centrado perfecto en móvil */
 }
 
 .login-container h2 {
@@ -78,7 +80,7 @@ header h1, header h2 {
     transition: all 0.2s ease;
 }
 
-/* Efecto de enfoque cuando escribes en el Login */
+/* Efecto de enfoque cuando escribes */
 .login-container input:focus, .form-section input:focus {
     outline: none;
     border-color: #06b6d4; /* Acento Cian */
@@ -103,7 +105,7 @@ header h1, header h2 {
     background: #0891b2;
 }
 
-/* Estilo para el mensaje de error que maneja auth.js */
+/* Estilo para el mensaje de error */
 #error-msg {
     background-color: rgba(239, 68, 68, 0.1);
     border: 1px solid #ef4444;
@@ -115,22 +117,29 @@ header h1, header h2 {
 }
 
 /* ==========================================
-   Tablas de Inventario Modernas
+   Tablas de Inventario Modernas (Y su contenedor responsivo)
    ========================================== */
+/* 💡 RECOMENDACIÓN: Envuelve tus <table> dentro de un <div class="table-wrapper"> en tu HTML */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal en móvil si la tabla es muy ancha */
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #334155;
 }
 
 th, td {
     padding: 14px 16px;
     text-align: left;
     border-bottom: 1px solid #334155;
+    white-space: nowrap; /* Evita que el texto de las celdas se rompa feo en líneas raras */
 }
 
 th {
@@ -148,9 +157,8 @@ td {
     font-size: 0.95rem;
 }
 
-/* Efecto hover en las filas de la tabla */
 tr:hover td {
-    background-color: #24334d; /* Resalta sutilmente la fila activa */
+    background-color: #24334d;
 }
 
 /* ==========================================
@@ -171,7 +179,7 @@ button:hover {
 }
 
 .btn-logout {
-    background: #ef4444; /* Rojo plano moderno */
+    background: #ef4444;
     color: white;
     text-decoration: none;
     padding: 10px 18px;
@@ -186,7 +194,7 @@ button:hover {
 }
 
 .btn-edit { 
-    background: #f59e0b; /* Ámbar plano */
+    background: #f59e0b;
     color: #0f172a; 
     margin-right: 6px; 
 }
@@ -196,7 +204,7 @@ button:hover {
     color: white; 
 }
 
-/* Formulario de agregar/editar productos */
+/* Formulario de agregar/editar productos moderno y flexible */
 .form-section {
     background: #0f172a;
     padding: 20px;
@@ -205,18 +213,78 @@ button:hover {
     margin-bottom: 25px;
 }
 
+/* Convertimos el formulario interno en un layout flexible */
+.form-section form {
+    display: flex;
+    flex-wrap: wrap; /* Permite saltar de línea si no caben los inputs */
+    gap: 12px; /* Espaciado uniforme */
+    align-items: center;
+}
+
 .form-section input {
     padding: 10px 14px;
-    margin-right: 12px;
     background-color: #1e293b;
     border: 1px solid #475569;
     border-radius: 6px;
     color: #f8fafc;
     font-size: 0.95rem;
+    flex: 1 1 200px; /* Crece y se encoge dinámicamente con un mínimo de 200px */
+    width: 100%;
 }
 
 #productoForm button {
-    background: #10b981; /* Esmeralda para acciones de guardar */
+    background: #10b981; /* Esmeralda */
     color: #0f172a;
     padding: 10px 20px;
+    flex: 1 1 auto; /* Se adapta al espacio restante en móviles */
+    text-align: center;
+}
+
+/* ==========================================
+   MEDIA QUERIES (Adaptación para Móviles y Tablets)
+   ========================================== */
+
+/* Tablets y pantallas medianas (Menor a 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Menos espacio en los bordes de la pantalla */
+    }
+
+    .container {
+        padding: 20px; /* Reducción de padding interno */
+        margin-top: 10px;
+    }
+
+    header {
+        flex-direction: column; /* Apila el título y el botón de cerrar sesión */
+        text-align: center;
+        align-items: center;
+    }
+
+    .btn-logout {
+        width: 100%; /* Botón de salir a pantalla completa en móvil */
+        text-align: center;
+    }
+}
+
+/* Pantallas pequeñas y Celulares (Menor a 480px) */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 20px;
+        margin-top: 5vh;
+    }
+
+    .login-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-section {
+        padding: 15px;
+    }
+    
+    /* Forzar a que los botones de acción de las tablas tengan espacio */
+    .btn-edit, .btn-delete {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
 }
