@@ -27,8 +27,8 @@ app.use('/api/usuarios', usuariosRoutes);
 // 6. Servir archivos estáticos subiendo un nivel a la carpeta frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Redirigir cualquier otra petición que no sea de la API al index.html
-app.get('*', (req, res) => {
+// Redirigir cualquier otra petición al index.html usando la sintaxis compatible (.*)
+app.get('(.*)', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
